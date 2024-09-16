@@ -23,7 +23,7 @@ jobs:
     - name: Deploy to Server
       run: |
         ssh -i ~/.ssh/id_rsa root@212.193.30.159 "
-        cd /var/www/test &&
+        cd /var/www/test/test &&
         git pull &&
         docker-compose down &&
         docker-compose build &&
