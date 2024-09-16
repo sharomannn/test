@@ -1,5 +1,5 @@
 # Используем образ Python 3.9
-FROM python:3.10-slim
+FROM python:3.10.12-slim
 
 # Устанавливаем зависимости для psycopg2 (работа с PostgreSQL)
 RUN apt-get update && apt-get install -y \
