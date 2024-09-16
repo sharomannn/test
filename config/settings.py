@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+print("POSTGRES_DB:", os.getenv('POSTGRES_DB'))
+print("POSTGRES_USER:", os.getenv('POSTGRES_USER'))
+print("POSTGRES_PASSWORD:", os.getenv('POSTGRES_PASSWORD'))
+print("DB_HOST:", os.getenv('DB_HOST'))
+print("DB_PORT:", os.getenv('DB_PORT'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
