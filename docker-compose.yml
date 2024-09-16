@@ -21,10 +21,13 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    env_file:
-      - .env
     environment:
-      - DJANGO_SETTINGS_MODULE=test.settings
+      POSTGRES_DB: your_db_name
+      POSTGRES_USER: your_db_user
+      POSTGRES_PASSWORD: your_db_password
+      DB_HOST: db
+      DB_PORT: 5432
+      DJANGO_SETTINGS_MODULE: test.settings
 
 volumes:
   postgres_data:  # Объявляем том
