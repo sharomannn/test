@@ -11,6 +11,7 @@ services:
       POSTGRES_PASSWORD: your_db_password
 
   web:
+    build: .  # Добавляем инструкцию для сборки образа
     command: >
       sh -c "while !</dev/tcp/db/5432; do sleep 1; done;
       python manage.py migrate && gunicorn --bind 0.0.0.0:8000 test.wsgi:application"
