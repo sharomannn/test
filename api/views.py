@@ -16,4 +16,4 @@ name_param = openapi.Parameter(
 @api_view(['GET'])
 def hello_personalized(request):
     name = request.query_params.get('name', 'World')  # Получаем параметр name, по умолчанию 'World'
-    return Response({"message": f"Hello, {name}!"})
+    return Response({"message": f"Helslo, {name}!"})
