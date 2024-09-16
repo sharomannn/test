@@ -1,0 +1,30 @@
+name: Deploy Django App to Server
+
+on:
+  push:
+    branches:
+      - main  # Запускать деплой при пуше в ветку main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH for server connection
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H 212.193.30.159 >> ~/.ssh/known_hosts
+
+    - name: Deploy to Server
+      run: |
+        ssh -i ~/.ssh/id_rsa root@212.193.30.159 "
+        cd /var/www/test &&
+        git pull &&
+        docker-compose down &&
+        docker-compose build &&
+        docker-compose up -d
+        "
