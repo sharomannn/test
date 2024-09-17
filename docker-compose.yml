@@ -7,6 +7,8 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+    command: >
+      sh -c "python manage.py migrate &&
+             gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
     environment:
-      DJANGO_SETTINGS_MODULE: config.settings  # Указываем правильный путь к settings.py
-    command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application  # Указываем правильный путь к wsgi.py
+      DJANGO_SETTINGS_MODULE: config.settings
