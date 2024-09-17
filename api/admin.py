@@ -1,3 +1,7 @@
 from django.contrib import admin
+from api.models import Authors
 
-# Register your models here.
+
+@admin.register(Authors)
+class AutorAdmin(admin.ModelAdmin):
+    list_display = ('name',)

@@ -2,6 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from rest_framework.viewsets import ModelViewSet
+from api import models, serializers
 
 # Описание параметра
 name_param = openapi.Parameter(
@@ -17,3 +19,7 @@ name_param = openapi.Parameter(
 def hello_personalized(request):
     name = request.query_params.get('name', 'World')  # Получаем параметр name, по умолчанию 'World'
     return Response({"message": f"Helsi,lo, {name}!"})
+
+class Authors(ModelViewSet):
+    queryset = models.Authors.objects.all()
+    serializer_class = serializers.Authors
