@@ -18,7 +18,7 @@ name_param = openapi.Parameter(
 @api_view(['GET'])
 def hello_personalized(request):
     name = request.query_params.get('name', 'World')  # Получаем параметр name, по умолчанию 'World'
-    return Response({"message": f"Helsi,lo, {name}!"})
+    return Response({"message": f"Helwsi,lo, {name}!"})
 
 class Authors(ModelViewSet):
     queryset = models.Authors.objects.all()
